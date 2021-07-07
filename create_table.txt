@@ -1,0 +1,42 @@
+DROP SCHEMA IF EXISTS satellite_population CASCADE;
+CREATE SCHEMA satellite_population;
+
+/* create a test table*/
+
+DROP TABLE IF EXISTS satellite_population.test;
+CREATE TABLE satellite_population.test
+	(COSPAR_id varchar(50),
+	RSO_name varchar(50), 
+	RSO_type varchar(50),
+	payload_operational_status varchar(50),
+	orbit_type varchar(50),
+	application varchar(50),
+	owner varchar(50), 
+	launch_site_code varchar(50),
+	launch_date date,
+	decay_date date, 
+	orbital_period decimal,
+	mass integer,
+	maneuverable integer,
+	spin_stabilised integer, 
+	inclination_deg integer,
+	apogee_hgt integer,
+	perigree_hgt integer,
+	radar_cross_section integer,
+	characteristic_area integer,
+	characteristic_length integer,
+	propulsion_types varchar(50),
+	orbital_status_code varchar(50),
+	epoch_of_orbit date,
+	semi_major_axis integer, 
+	eccentricity decimal,
+	inclination decimal,
+	argument_of_perigree decimal, 
+	RAAN decimal,
+	true_anomaly decimal
+	);
+
+alter table satellite_population.test
+	add constraint test_pk
+	primary key (COSPAR_id);
+	
