@@ -39,4 +39,3 @@ CREATE TABLE satellite_population.test
 alter table satellite_population.test
 	add constraint test_pk
 	primary key (COSPAR_id);
-	
