@@ -110,7 +110,7 @@ app.get('/allSatellites', function (req, res) {
 
         // want to return just 10 of the rows to test to see if it works
 
-        var query = "select * from satellite_population.test limit 10;"
+        var query = "select * from satellite_population.test;"
         console.log(query);
 
         
