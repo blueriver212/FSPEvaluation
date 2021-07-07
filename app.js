@@ -29,6 +29,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', function(req, res) {
+    res.send("Hello and welcome to the satellite API, add a year onto the URL to return the year that you would like to see");
+})
+
 // this route will return all of the test satellites
 app.get('/allSatellites', function (req, res) {
     pool.connect(function (err, client, done) {
