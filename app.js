@@ -107,8 +107,12 @@ var http = require('http'); var https = require('https');
 
 var httpServer = http.createServer(app);
 
-port = 4480;
-httpServer.listen(port);
+// port = 4480;
+//httpServer.listen(port);
+
+httpServer.listen(process.env.PORT || 3000, () => 
+	console.log("Listening on PORT " + process.env.PORT)
+);
 
 app.use(function(req, res, next) {
 	res.setHeader("Access-Control-Allow-Origin", "*");
