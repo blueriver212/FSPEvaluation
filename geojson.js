@@ -45,32 +45,37 @@ geoJSON.get('/allSatellites', function (req, res) {
     });
 });
 
+geoJSON.get('/favicon.ico', (req,res)=>{
+    return 'your faveicon' // this stops  favicon.ico being returned as the params of the next file
+   })
+   
 
 // create a route that should take the year, and will return the year 
-// geoJSON.get('/:year', function (req, res) {
-//     pool.connect(function (err, client, done) {
-//         if (err) {
-//             console.log("not able to get a connection " + err) 
-//             res.status(400).send(err);
-//         }
+geoJSON.get('/:year', function (req, res) {
+    pool.connect(function (err, client, done) {
+        if (err) {
+            console.log("not able to get a connection " + err) 
+            res.status(400).send(err);
+        }
 
-//         var year = req.params.year;
+        var year = req.params.year;
+        console.log(year);
+        // want to return just 10 of the rows to test to see if it works
 
-//         // want to return just 10 of the rows to test to see if it works
+        // var query = "select * from satellite_population.test";
+        // query = query + " where launch_date >= '"+year+"-01-01' AND  launch_date <=  '"+year+"-12-31';";
 
-//         var query = "select * from satellite_population.test";
-//         query = query + " where launch_date >= '"+year+"-01-01' AND  launch_date <=  '"+year+"-12-31';";
-
-        
-//         client.query(query, function (err, result) {
-//             done();
-//             if (err) {
-//                 res.status(400).send(err)
-//             }
-//             res.status(200).send(result.rows);
-//         });
-//     });
-// });
+        var query = "select * from satellite_population.test where launch_date >= '"+year+"-01-01' and launch_date <= '"+year+"-12-31' limit 10;";
+        console.log(query);
+        client.query(query, function (err, result) {
+            done();
+            if (err) {
+                res.status(400).send(err)
+            }
+            res.status(200).send(result.rows);
+        });
+    });
+});
 
 
 module.exports = geoJSON;
