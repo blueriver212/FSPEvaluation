@@ -3,16 +3,6 @@ var pg = require('pg');
 var geoJSON = require('express').Router();
 var fs = require('fs');
 
-var configtext = ""+fs.readFileSync("postGISConnection.js");
-
-// now convert the configuration file into the correct format 
-// var configarray = configtext.split(",");
-// var config = {};
-// for (var i = 0; i < configarray.length; i++) {
-// var split = configarray[i].split(':');
-// config[split[0].trim()] = split[1].trim();
-// }
-
 var config = {
     	connectionString: process.env.DATABASE_URL,
     	database: "d6v2ejscl1vh5e", // please add your own
