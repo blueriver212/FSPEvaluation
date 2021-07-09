@@ -47,30 +47,30 @@ geoJSON.get('/allSatellites', function (req, res) {
 
 
 // create a route that should take the year, and will return the year 
-geoJSON.get('/:year', function (req, res) {
-    pool.connect(function (err, client, done) {
-        if (err) {
-            console.log("not able to get a connection " + err) 
-            res.status(400).send(err);
-        }
+// geoJSON.get('/:year', function (req, res) {
+//     pool.connect(function (err, client, done) {
+//         if (err) {
+//             console.log("not able to get a connection " + err) 
+//             res.status(400).send(err);
+//         }
 
-        var year = req.params.year;
+//         var year = req.params.year;
 
-        // want to return just 10 of the rows to test to see if it works
+//         // want to return just 10 of the rows to test to see if it works
 
-        var query = "select * from satellite_population.test";
-        query = query + " where launch_date >= '"+year+"-01-01' AND  launch_date <=  '"+year+"-12-31';";
+//         var query = "select * from satellite_population.test";
+//         query = query + " where launch_date >= '"+year+"-01-01' AND  launch_date <=  '"+year+"-12-31';";
 
         
-        client.query(query, function (err, result) {
-            done();
-            if (err) {
-                res.status(400).send(err)
-            }
-            res.status(200).send(result.rows);
-        });
-    });
-});
+//         client.query(query, function (err, result) {
+//             done();
+//             if (err) {
+//                 res.status(400).send(err)
+//             }
+//             res.status(200).send(result.rows);
+//         });
+//     });
+// });
 
 
 module.exports = geoJSON;
