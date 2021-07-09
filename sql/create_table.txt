@@ -33,7 +33,20 @@ CREATE TABLE satellite_population.test
 	inclination decimal,
 	argument_of_perigree decimal, 
 	RAAN decimal,
-	true_anomaly decimal
+	true_anomaly decimal,
+	ECI_X decimal, 
+	ECI_Y decimal, 
+	ECI_Z decimal, 
+	ECI_v1 decimal, 
+	ECI_v2 decimal, 
+	ECI_v3 decimal, 
+	ECEF_X decimal, 
+	ECEF_Y decimal, 
+	ECEF_Z decimal, 
+	ECEF_v1 decimal, 
+	ECEF_v2 decimal, 
+	ECEF_v3 decimal, 
+	year integer
 	);
 
 alter table satellite_population.test
