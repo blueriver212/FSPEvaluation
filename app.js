@@ -129,7 +129,7 @@ app.use(function(req,res,next) {
 	next(); // this is what i could have been missing
 })
 
-const geoJSON = require('./routes/geojson');
+const geoJSON = require('./geojson.js');
 app.use('/', geoJSON);
 
 const bodyParser = require('body-parser');
