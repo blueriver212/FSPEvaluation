@@ -81,4 +81,32 @@ geoJSON.get('/:year', function (req, res) {
 });
 
 
+geoJSON.get('/test/test', function (req, res) { // otherwise it will try to parse it as year
+    pool.connect(function (err, client, done) {
+        if (err) {
+            console.log("not able to get a connection " + err) 
+            res.status(400).send(err);
+        }
+
+        //var year = req.params.year;
+
+        // want to return just 10 of the rows to test to see if it works
+
+        var query_1 = "select * from satellite_population.test;";
+        // for future queries
+        // var query = "select * from satellite_population.test where LEFT(launch_date, 4) like '2019';"
+
+        
+        client.query(query_1, function (err, result) {
+            done();
+            if (err) {
+                res.status(400).send(err)
+            }
+            res.status(200).send(result.rows);
+        });
+    });
+});
+
+
+
 module.exports = geoJSON;
