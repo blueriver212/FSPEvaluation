@@ -102,6 +102,28 @@ geoJSON.get('/:schema/:year', function (req, res) { // otherwise it will try to 
     });
 });
 
+geoJSON.get('/:schema/:year/:country', function (req, res) { // otherwise it will try to parse it as year
+    pool.connect(function (err, client, done) {
+        if (err) {
+            console.log("not able to get a connection " + err) 
+            res.status(400).send(err);
+        }
+
+        var schema = req.params.schema;
+        var year = req.params.year;
+        var country = req.params.country;
+        
+        var query_1 = "select * from satellite_population.fsp"+schema+" where  launch_date <= '"+year+"-12-31' and owner like '%"+country+"%';";
+        client.query(query_1, function (err, result) {
+            done();
+            if (err) {
+                res.status(400).send(err)
+            }
+            res.status(200).send(result.rows);
+        });
+    });
+});
+
 
 
 module.exports = geoJSON;
