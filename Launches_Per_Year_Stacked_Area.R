@@ -4,6 +4,7 @@
 library(dplyr)
 library(viridis)
 library(hrbrthemes)
+
 fsp <- fsp %>%
   mutate(AltitudeGroup = case_when(
     PERIGEE <= 2000 ~ "LEO", 
@@ -21,7 +22,7 @@ ggplot(fsp_per_year, aes(x=Group.1, y=x)) +
 fsp_test <- fsp %>%
   group_by(fsp$year, fsp$AltitudeGroup, .drop = FALSE) %>%
   tally() %>%
-  mutate(cumulative = cumsum(fsp$year))
+  mutate(cumulative = cumsum(as.character(fsp$year)))
   
 
 
