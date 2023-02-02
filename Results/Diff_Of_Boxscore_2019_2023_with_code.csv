@@ -1,0 +1,92 @@
+Country,Country_,C_Code,Payloads_Active_Diff,Payloads_Total_Diff,Payloads_Decayed_Diff,Debris_Total_Diff,Debris_Decayed_Diff,Debris_OnOrbit_Diff,All_OnOrbit_Diff,All_Decayed_Diff,All_Total_Diff
+ALG,Algeria,DZ,-4,0,-6,0,0,0,0,0,0
+ANG,Angola,AO,1,1,-1,0,0,0,1,0,1
+ARGN,Argentina,AR,15,28,-20,0,0,0,28,0,28
+ASRA,Austria,AT,-1,0,-3,0,0,0,0,0,0
+AUS,Australia,AU,-3,11,-16,0,0,0,8,3,11
+AZER,Azerbaijan,AZ,-3,0,-3,0,0,0,0,0,0
+BEL,Belgium,BE,1,5,-3,0,0,0,4,1,5
+BELA,Belarus,BY,-2,0,-2,0,0,0,0,0,0
+BGD,Bangladesh,BD,-1,0,-1,0,0,0,0,0,0
+BHUT,Bhutan,BT,-1,0,0,0,0,0,-1,1,0
+BOL,Bolivia,BO,-1,0,-1,0,0,0,0,0,0
+BRAZ,Brazil,BR,-6,5,-18,0,0,0,5,0,5
+BUL,Bulgaria,BG,0,2,-1,0,0,0,1,1,2
+CA,Canada,CA,-305,-273,-349,0,0,0,-275,2,-273
+CHLE,Chile,CL,1,3,-3,0,0,0,3,0,3
+CIS,Russia,RU,-99,104,-1473,-634,-517,-117,-62,-468,-530
+COL,Colombia,CO,-1,0,-2,0,0,0,0,0,0
+CRI,Costa Rica,CR,0,0,0,0,0,0,0,0,0
+CZCH,Czech Republic,CZ,2,4,-6,0,0,0,4,0,4
+DEN,Denmark,DK,-7,1,-9,0,0,0,0,1,1
+ECU,Ecuador,EC,-2,0,-2,0,0,0,0,0,0
+EGYP,Egypt,EG,2,4,-5,0,0,0,3,1,4
+EST,Estonia,EE,0,1,-1,0,0,0,1,0,1
+FIN,Finland,FI,14,19,-5,0,0,0,19,0,19
+FR,France,FR,-2,24,-57,10,0,10,32,2,34
+GER,Germany,DE,-23,15,-72,-5,-1,-4,15,-5,10
+GHA,Ghana,GH,0,0,0,0,0,0,0,0,0
+GREC,Greece,GR,-2,0,-3,0,0,0,0,0,0
+GUAT,Guatemala,GT,0,1,1,0,0,0,0,1,1
+HUN,Hungary,HU,2,4,2,0,0,0,2,2,4
+IND,India,IN,-63,-6,-115,3,1,2,-2,-1,-3
+INDO,Indonesia,ID,-8,0,-17,0,0,0,0,0,0
+IRAN,Iran,IR,1,3,0,2,0,2,4,1,5
+IRAQ,Iraq,IQ,-1,0,-1,0,0,0,0,0,0
+ISRA,Israel,IL,0,15,-16,1,1,0,14,2,16
+IT,Italy,IT,-1,16,-28,0,0,0,16,0,16
+JOR,Jordan,JO,-1,0,-1,0,0,0,0,0,0
+JPN,Japan,JP,-70,22,-186,8,2,6,22,8,30
+KAZ,Kazakhstan,KZ,-8,0,-9,0,0,0,0,0,0
+KEN,Kenya,KE,0,0,0,0,0,0,0,0,0
+KWT,Kuwait,KW,1,1,0,0,0,0,1,0,1
+LAOS,Laos,LA,-1,0,-1,0,0,0,0,0,0
+LKA,Sri Lanka,LK,0,1,1,0,0,0,0,1,1
+LTU,Lithuania,LT,5,6,-3,0,0,0,6,0,6
+LUXE,Luxembourg,LU,12,12,-1,0,0,0,12,0,12
+MA,Morocco,MA,-2,0,-2,0,0,0,0,0,0
+MALA,Malaysia,MY,-4,1,-8,0,0,0,0,1,1
+MDA,Moldova,MD,0,1,0,0,0,0,1,0,1
+MEX,Mexico,MX,-2,3,-8,0,0,0,2,1,3
+MMR,Myanmar,MM,0,1,0,0,0,0,1,0,1
+MNG,Mongolia,MN,0,0,0,0,0,0,0,0,0
+MUS,Mauritius,MU,0,1,1,0,0,0,0,1,1
+NETH,Netherlands,NL,-1,4,-8,0,0,0,4,0,4
+NIG,Nigeria,NG,-3,0,-5,0,0,0,0,0,0
+NKOR,North Korea,KP,-1,0,-2,0,0,0,0,0,0
+NOR,Norway,NO,-4,4,-11,0,0,0,4,0,4
+NPL,Nepal,NP,0,1,1,0,0,0,0,1,1
+NZ,New Zealand,NZ,20,20,0,0,0,0,20,0,20
+PAKI,Pakistan,PK,-3,0,-6,0,0,0,0,0,0
+PERU,Peru,PE,-1,0,-2,0,0,0,0,0,0
+POL,Poland,PL,6,10,0,0,0,0,7,3,10
+POR,Portugal,PT,0,0,-1,0,0,0,0,0,0
+PRC,China,CN,-23,240,-464,158,61,97,356,42,398
+PRY,Paraguay,PY,0,1,1,0,0,0,0,1,1
+QATR,Qatar,QA,-1,-1,-1,0,0,0,-1,0,-1
+ROC,Taiwan,#FIELD!,1,9,-10,0,0,0,9,0,9
+ROM,Romania,RO,0,0,0,0,0,0,0,0,0
+RP,Philippines,PH,-2,3,1,0,0,0,-1,4,3
+RWA,Rwanda,RW,1,2,1,0,0,0,1,1,2
+SAFR,South Africa,ZA,0,3,-4,0,0,0,2,1,3
+SAUD,Saudi Arabia,SA,-12,1,-15,0,0,0,1,0,1
+SDN,Sudan,SD,1,1,0,0,0,0,1,0,1
+SING,Singapore,SG,-5,3,-9,0,0,0,2,1,3
+SK,Slovakia,SK,-12,-16,-16,0,0,0,-12,-4,-16
+SKOR,South Korea,KR,-5,11,-22,1,0,1,12,0,12
+SPN,Spain,ES,5,24,-25,0,0,0,23,1,24
+SVN,Slovenia,SI,3,3,0,0,0,0,3,0,3
+SWED,Sweden,SE,-1,0,-11,0,0,0,0,0,0
+SWTZ,Switzerland,CH,7,10,-4,0,0,0,10,0,10
+THAI,Thailand,TH,-1,4,-9,0,0,0,4,0,4
+TMMC,Turkmenistan,TM,-1,0,-1,0,0,0,0,0,0
+TUN,Tunisia,TN,1,1,0,0,0,0,1,0,1
+TURK,Turkey,TR,-4,4,-12,0,0,0,3,1,4
+UAE,United Arab Emirates,AE,-3,8,-11,0,0,0,8,0,8
+UK,United Kingdom,GB,-264,-229,-707,0,0,0,-235,6,-229
+UKR,Ukraine,UA,0,4,-3,-3,0,-3,1,0,1
+URY,Uruguay,UY,0,0,-1,0,0,0,0,0,0
+US,United States,US,-915,232,-5103,-145,-66,-79,-213,300,87
+USBZ,Uzbekistan,UZ,0,-1,0,0,0,0,0,0,-1
+VENZ,Venezuela,VE,0,-3,0,0,0,0,0,0,-3
+VTNM,Vietnam,VN,0,-4,0,0,0,0,0,0,-4
