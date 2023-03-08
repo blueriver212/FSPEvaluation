@@ -4,15 +4,17 @@
 library(dplyr)
 library(viridis)
 library(hrbrthemes)
+library(jsonlite)
 
-names(fsp)[16] <- "APOGEE"
-names(fsp)[17] <- "PERIGEE"
-fsp <- fsp %>%
+fsp_2043$e <- as.numeric(fsp_2043$e)
+fsp_2043 <- fsp_2043 %>%
   mutate(AltitudeGroup = case_when(
     PERIGEE <= 2000 ~ "LEO", 
     PERIGEE > 2000 & PERIGEE <= 35786 ~ "MEO", 
     PERIGEE > 35786 ~ "GEO"
   ))
+
+fsp_2043$AltitudeGroup[fsp_2043$e > 0.2] <- 'HEO'
 
 satcat <- satcat %>%
   mutate(AltitudeGroup = case_when(
@@ -22,31 +24,34 @@ satcat <- satcat %>%
   ))
 
 
-## create a year colummn
-fsp$year <- substr(fsp$X.9., 1, 4)
-fsp$year <- as.Date(fsp$year, "%Y")
+## create a year colummn with just the year 
+fsp_2043$year <- substr(fsp_2043$LAUNCH_DATE, 1, 4)
+fsp_2043$year <- as.Date(fsp_2043$year, "%Y")
+fsp_2043$year <- floor_date(fsp_2043$year)
 
-satcat$year <- substr(satcat$LAUNCH_DATE, 1, 4)
-satcat$year <- as.Date(satcat$year, "%Y")
+fsp_stacked_graph <- fsp_2043[c('AltitudeGroup', 'year')]
 
 
+fsp_by_group <- fsp_stacked_graph %>%
+  count(
+    LAUNCH_DATE = floor_date(year, 'year'),
+    PERIGEE = AltitudeGroup,
+    name = "COUNT"
+  )
 
-fsp_per_year <- aggregate(fsp$AltitudeGroup, by=list(fsp$year), NROW)
-View(fsp_per_year)
+ggplot(fsp_by_group, aes(x=LAUNCH_DATE, y=COUNT, fill=PERIGEE)) +
+  geom_area()
 
-satcat_per_year <- aggregate(satcat$AltitudeGroup, by=list(satcat$year), NROW)
 
-ggplot(fsp_per_year, aes(x=Group.1, y=x)) +
-  geom_line(data = satcat_per_year, aes(x=Group.1, y=x))
+## to format into json, I need each of the groups seperately
+fsp_leo <- fsp_by_group[fsp_by_group$PERIGEE %like% 'GEO',]
 
-fsp_test <- fsp %>%
-  group_by(fsp$year, fsp$AltitudeGroup, .drop = FALSE) %>%
-  tally() %>%
-  mutate(cumulative = cumsum(as.character(fsp$year)))
+test <- jsonlite::toJSON(fsp_leo)
+test
 
-ggplot(fsp_test, aes(x=fsp_test$`fsp$year`, y=n, fill=fsp_test$`fsp$AltitudeGroup`)) +
-  geom_area(alpha=0.6, size=1) +
-  scale_fill_viridis(discrete = T, name="Altitude Group") +
-  theme_ipsum() + 
-  ggtitle("Launches per year based on Perigee (km)") +
-  labs(x='Year')
+
+## create the json for the yearly stats
+fsp_2043_onorbit <- fsp_2043[]
+fsp_2043_active <- fsp_2043[fsp_2043$PAYLOAD_OPERATIONAL_STATUS %like% '+',]
+
+count(fsp_2043_active_satellites[fsp_2043_active_satellites$RSO_NAME %like% 'STARLINK', ])

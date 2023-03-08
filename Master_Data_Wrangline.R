@@ -1,19 +1,36 @@
 ## MASTER SCRIPT - Certain Plots were incorrect, so starting again. 
 library(dplyr)
 library(stringr)
-library(rworldmap)
 library(RColorBrewer)
+library(data.table)
 
 # FUTURE SPACE POPULATIONS
 fsp <- read.csv("Data/fspcat_20230101_v90721_nodeb.csv",na.strings=c("","NA"))
 colnames(fsp) <- c('COSPARID', 'RSO_NAME', 'RSO_TYPE', 'PAYLOAD_OPERATIONAL_STATUS', 'ORBIT_TYPE', 
                   'APPLICATION', 'SOURCE', 'LAUNCH_SITE', 'LAUNCH_DATE', 'DECAY_DATE', 'ORBITAL_PERIOD', '12', '13', '14', 'INCLINATION', 'APOGEE', 'PERIGEE', '18', '19', '20', '21',
-                  '22', '23', 'a', 'e', '26', '27', '28', '29', 'X_', 'Y_', 'Z_', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42')
+                  '22', '23', 'a', 'e', 'i', 'w', 'W', 'V', 'X_', 'Y_', 'Z_', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42')
 fsp$LAUNCH_YEAR <- substr(fsp$LAUNCH_DATE, 1, 4)
 fsp$LAUNCH_YEAR <- as.Date(fsp$LAUNCH_YEAR, "%Y")
 fsp$LAUNCH_YEAR <- lubridate::floor_date(fsp$LAUNCH_YEAR, 'year')
 fsp_launches_per_year <- fsp %>% count(LAUNCH_YEAR)
 fsp_launches_per_year$sum <- ave(fsp_launches_per_year$n, FUN=cumsum)
+
+fsp <- fsp %>%
+  mutate_if(is.character, str_trim)
+
+
+satcat_2019 <- satcat[satcat$LAUNCH_DATE < '2019-01-01',]
+
+## FSP 2043
+fsp_2043 <- read.csv("Data/fspcat_20430701_v280819_nodeb.csv",na.strings=c("","NA"))
+colnames(fsp_2043) <- c('COSPARID', 'RSO_NAME', 'RSO_TYPE', 'PAYLOAD_OPERATIONAL_STATUS', 'ORBIT_TYPE', 
+                   'APPLICATION', 'SOURCE', 'LAUNCH_SITE', 'LAUNCH_DATE', 'DECAY_DATE', 'ORBITAL_PERIOD', '12', '13', '14', 'INCLINATION', 'APOGEE', 'PERIGEE', '18', '19', '20', '21',
+                   '22', '23', 'a', 'e', 'i', 'w', 'W', 'V')
+fsp_2043$LAUNCH_YEAR <- substr(fsp_2043$LAUNCH_DATE, 1, 4)
+fsp_2043$LAUNCH_YEAR <- as.Date(fsp_2043$LAUNCH_YEAR, "%Y")
+fsp_2043$LAUNCH_YEAR <- lubridate::floor_date(fsp_2043$LAUNCH_YEAR, 'year')
+fsp_2043_launches_per_year <- fsp_2043 %>% count(LAUNCH_YEAR)
+fsp_2043_launches_per_year$sum <- ave(fsp_2043_launches_per_year$n, FUN=cumsum)
 
 fsp <- fsp %>%
   mutate_if(is.character, str_trim)
@@ -40,6 +57,9 @@ fsp_above_2019 <- fsp[fsp$LAUNCH_DATE >= '2019-01-01', ] # 5, 290
 write.csv(fsp_above_2019, 'fsp_above_2019.csv')
 write.csv(satcat_above_2019, 'satcat_above_2019.csv')
 
+fsp_above_2019_starlink <- fsp_above_2019[fsp_above_2019$RSO_NAME %like% 'Starlink',]
+write.csv(fsp_above_2019_starlink, 'fsp_above_2019_starlink.csv')
+
 
 # Firstly, run the boxscore scripts, this will produce two files, "Results/SATCAT_boxscore_2023.csv" and "Results/FSP_boxscore_2023.csv"
 source('Satcat-BoxScore-2019-2023.R')
@@ -50,6 +70,3 @@ source('AltitudeDensity.R')
 
 ## analysis for the megaconstellations
 source('AltitudeDensity_Starlink_Oneweb.R')
-
-## analysis for the overall decay rate
-source('DecayRate.R')
