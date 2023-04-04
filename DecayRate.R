@@ -58,8 +58,17 @@ ggplot(data=fsp_2043_decayed, aes(x=DECAY_DATE)) +
 ggplot(data=satcat_above_2019_has_decayed, aes(x=DECAY_DATE)) +
   geom_histogram(binwidth = 30) +
   geom_histogram(data = fsp_above_2019_has_decayed, aes(x=DECAY_DATE), binwidth = 30, fill="#69b3a2", color="lightblue", alpha=0.9)+
-  labs(x="Date", y="Decayed Objects", title="Decay Rate from 2019-2043") +
+  labs(x="Date", y="Decayed Objects", title="Objects that have decaysed, by mont from 2019-2043") +
   scale_fill_manual(name = "Data Source", 
                     values = c("satcat_above_2019_has_decayed" = "red", "fsp_above_2019_has_decayed" = "blue"), 
                     labels = c("satcat_above_2019_has_decayed", "fsp_above_2019_has_decayed"))
+
+
+ggplot(mapping = aes(x = DECAY_DATE)) +
+  geom_histogram(data = satcat_above_2019_has_decayed, aes(fill = "satcat_above_2019_has_decayed"), binwidth = 30, alpha = 0.5) +
+  geom_histogram(data = fsp_above_2019_has_decayed, aes(fill = "fsp_above_2019_has_decayed"), binwidth = 30, alpha = 0.5) +
+  labs(x = "Date", y = "Decayed Objects", title = "Objects that have decayed, monthly from 2019-2023") +
+  scale_fill_manual(name = "Data Source",
+                    values = c("satcat_above_2019_has_decayed" = "red", "fsp_above_2019_has_decayed" = "blue"),
+                    labels = c("FSP", "SATCAT"))
 
